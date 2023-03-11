@@ -1,0 +1,12 @@
+openai
+
+'''
+Get Your OpenAI API Key
+You need an API key to make successful API calls. Sign up for the OpenAI API and create a new API key
+
+save to file and put: "openai.api_key_path = '<api_key_path>'" in the code
+
+or try work with environment:
+environment (windows) : "$ENV:OPENAI_API_KEY = "<your-key-value-here>"" to store the new key in the environment (With this command, you make the API key accessible under the environment variable OPENAI_API_KEY in your current terminal session. Keep in mind that you’ll lose it if you close your terminal.)
+and embed: "openai.api_key = os.getenv("OPENAI_API_KEY")" in your code. (+import os)
+'''

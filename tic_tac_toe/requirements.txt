@@ -1,0 +1,7 @@
+# Check play.py for starting simple console game.
+
+'''
+python -m pip install --editable library/
+'''
+
+wheel
