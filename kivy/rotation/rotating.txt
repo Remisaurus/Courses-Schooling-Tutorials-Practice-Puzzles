@@ -1,0 +1,88 @@
+1.
+
+Builder.load_string('''
+<RotatedImage>:
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            axis: 0, 0, 1
+            origin: root.center
+    canvas.after:
+        PopMatrix
+''')
+
+class RotatedImage(Image):
+    angle = NumericProperty()
+
+2.
+
+Use a Rotate canvas instruction, in combination with PushMatrix and PopMatrix to constrain the affected area, e.g. in kv language:
+
+canvas:
+    PushMatrix:
+    Rotate:
+        angle: 0.3
+    PopMatrix:
+
+or the equivalent in a with canvas: block in python code.
+
+3.
+
+class WidgetDrawer(Widget):
+
+    def __init__(self, imageStr, windowsize, **kwargs):
+        super(WidgetDrawer, self).__init__(**kwargs)
+        # this is part of the**kwargs notation
+        # if you haven't seen with before, here's a link
+        # http://effbot.org/zone/python-with-statement.html
+        self.WindowHeigth, self.WindowWidth = windowsize
+
+        with self.canvas:
+            PushMatrix()
+
+            # setup a default size for the object
+            self.size = (self.WindowWidth*.002*25, self.WindowWidth*.002*25)
+            # center the widget
+            self.pos = (self.center_x, self.center_y)
+            self.rot = Rotate()
+            self.rot.origin = self.pos
+            self.rot.axis = (0, 0, 1)
+            self.rot.angle = 30
+            # this line creates a rectangle with the image drawn on top
+            self.rect_bg = Rectangle(source=imageStr,
+                                     pos=self.pos,
+                                     size=self.size)
+            PopMatrix()
+            # this line calls the update_graphics_pos function every time the
+            # position variable is modified
+            self.bind(pos=self.update_graphics_pos)
+
+            self.velocity_x = 0  # initialize velocity_x and velocity_y
+            self.velocity_y = 0
+
+    def update_graphics_pos(self, instance, value):
+        # if the widgets position moves, the rectangle that contains the image
+        # is also moved
+        self.rect_bg.pos = value
+
+    # use this function to change widget position
+    def setPos(self, xpos, ypos):
+        self.x = xpos
+        self.y = ypos
+
+    def move(self):
+        self.x = self.x + self.velocity_x
+        self.y = self.y + self.velocity_y
+
+        if self.y > self.WindowHeigth*0.95:
+            # don't let the ship go up too high
+            self.y = self.WindowHeigth*0.95
+        if self.y <= 0:
+            self.y = 0  # set heigth to 0 if ship too low
+
+    def update(self):
+        # the update function moves the astreoid. Other things could happen
+        # here as well (speed changes for example)
+        self.move()
+

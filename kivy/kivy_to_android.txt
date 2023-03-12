@@ -1,21 +1,22 @@
-Steps to convert Kivy to Android APK -
+https://avionmission.github.io/blog/convert-py-to-apk-using-python-and-buildozer/
 
-Note - If you are using Linux or Mac. Open up your terminal and directly jump to step number 4
 
-1) Signup on Digital Ocean
-https://m.do.co/c/c2cf5bc2a760 - Use this link to get 100$ free
 
-2) Create a Droplet
-3) Open up terminal Access Console and login using you One-Time Password
-4) Installing Python and Virtual Environment  
-https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04
-5) Install buildozer - https://buildozer.readthedocs.io/en/latest/installation.html#targeting-android
-6) Install Filezilla ( skip if Linux or Mac) - https://filezilla-project.org/download.php
-7) Connect Filzilla to server ( skip if Linux or Mac)
-8) Upload your kivy folder to enviroments folder ( in linux/mac just go to your kivy folder using terminal)
-9) buildozer init
-10) buildozer -v android debug
+1.
+https://avionmission.github.io/blog/convert-py-to-apk-using-python-and-buildozer/
+2.
+https://colab.research.google.com/gist/kaustubhgupta/0d06ea84760f65888a2488bac9922c25/kivyapp-to-apk.ipynb
+3.
+Import your .py file (and assets you used in your app)
+After you import your .py file, rename it to main.py otherwise buildozer won’t recognize which python program it has to work on.
+4.
+run until (including) the “!buildozer” init command
+When you run the !buildozer init command, it will generate a buildozer.spec file, open it by double clicking on it. 
+5.
+In the contents of buildozer.spec file there is a requirements section. And along with python3,kivy and kivymd you have to add pillow to the requirements. 
+6.
+Run the !buildozer -v android debug and wait. 
+7.
+Inside the bin you will find a .apk file
 
-11) Using Filezilla download the apk in your bin directory
-12) Copy this apk file to your phone
-13) Run it. ( You need to enable install apk with unknown sources)
+

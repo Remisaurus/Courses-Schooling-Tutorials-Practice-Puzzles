@@ -1,0 +1,19 @@
+#:kivy 2.1.0
+
+FloatLayout:
+    Background:
+        id: background
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "blueness.jpg"
+            Rectangle:
+                size: self.width, 200
+                pos: self.pos[0], self.pos[1] + self.height - 200
+                texture: self.cloud_texture
+            Rectangle:
+                size: self.width, 150
+                pos: self.pos
+                texture: self.floor_texture
+

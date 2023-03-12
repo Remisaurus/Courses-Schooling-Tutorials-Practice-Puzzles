@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "text": "Just saw a great movie!",
+        "hashtags": ["movie", "great"]
+    },
+    {
+        "id": 2,
+        "text": "Can't wait for the weekend!",
+        "hashtags": []
+    },
+    {
+        "id": 3,
+        "text": "The food at this restaurant is amazing #foodie",
+        "hashtags": ["foodie"]
+    },
+    {
+        "id": 4,
+        "text": "I'm so tired today #coffee",
+        "hashtags": ["coffee"]
+    },
+    {
+        "id": 5,
+        "text": "I love going to the beach #beach",
+        "hashtags": ["beach"]
+    },
+    {
+        "id": 6,
+        "text": "Just finished a great workout #fitness",
+        "hashtags": ["fitness"]
+    },
+    {
+        "id": 7,
+        "text": "Just finished a great workout #fitness",
+        "hashtags": ["fitness"]
+    }
+]
