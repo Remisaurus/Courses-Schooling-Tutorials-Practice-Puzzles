@@ -1,0 +1,27 @@
+#:kivy 2.1.0
+#hurdle sizes became cap = 70, 22    layers = 50, 12
+
+<Hurdle>:
+    bottom_body_pos: self.pos[1]
+    bottom_cap_pos: self.hurdle_center - self.GAP_SIZE/2 - self.CAP_SIZE
+    top_body_pos: self.hurdle_center + self.GAP_SIZE/2 + self.CAP_SIZE
+    top_cap_pos: self.hurdle_center + self.GAP_SIZE/2
+    canvas.before:
+        Rectangle:
+            size: 50, self.bottom_cap_pos - self.bottom_body_pos
+            pos: self.pos[0] + 10, self.bottom_body_pos
+            texture: self.hurdle_body_texture
+            tex_coords: self.lower_hurdle_tex_coords
+        Rectangle:
+            size: 70, self.CAP_SIZE
+            pos: self.pos[0], self.bottom_cap_pos
+            source: 'walltop.png'
+        # Rectangle:
+        #     size: 70, self.CAP_SIZE
+        #     pos: self.pos[0], self.top_cap_pos
+        #     source: 'walltop.png'
+        # Rectangle:
+        #     size: 50, self.top - self.top_body_pos
+        #     pos: self.pos[0] + 10, self.top_body_pos
+        #     texture: self.hurdle_body_texture
+        #     tex_coords: self.top_hurdle_tex_coords

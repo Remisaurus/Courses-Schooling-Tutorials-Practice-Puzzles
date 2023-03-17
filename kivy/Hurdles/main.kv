@@ -1,4 +1,5 @@
 #:kivy 2.1.0
+#:include hurdle.kv
 
 FloatLayout:
     Background:
@@ -16,4 +17,29 @@ FloatLayout:
                 size: self.width, 150
                 pos: self.pos
                 texture: self.floor_texture
+    Label:
+        id: score
+        size_hint_y: None
+        height: 50
+        text: "score: 0"
+        font_size: 40
+    
+    Button:
+        id: start_button
+        text:'start hurdling'
+        background_normal: 'transparent.png'
+        background_down: 'transparent.png'
+        on_release:
+            self.disabled = True
+            self.opacity = 0
+            app.start_game()
+    
+    Bird:
+        source: 'een.png'
+        size_hint: None, None
+        size: 38, 22
+        pos: 33,  85
+        id: bird
+
+
 
